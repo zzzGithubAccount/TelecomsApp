@@ -13,33 +13,10 @@ public class PhoneNumber {
 	public PhoneNumber(String number) {
 		this.number = number;
 	}
-
-	public long getSerialVersionUID() {
-		return serialVersionUID;
-	}
-
-	public void setSerialVersionUID(long serialVersionUID) {
-		this.serialVersionUID = serialVersionUID;
-	}
-
-	public boolean isActivated() {
-		return activated;
-	}
-
-	public void setActivated(boolean activated) {
+	
+	public PhoneNumber(String number, boolean activated) {
+		this.number = number;
 		this.activated = activated;
 	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-	
-	
-	
-	
 	
 }

@@ -3,6 +3,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import telecom.org.dm.Customer;
 import telecom.org.dm.PhoneNumber;
@@ -13,12 +15,13 @@ import telecom.org.ex.TelNumberAlreadyActivatedException;
 @Component
 public class TelNumbersFactory implements ITelNumbersDao {
 
+	private static final Logger logger = LoggerFactory.getLogger(TelNumbersFactory.class);
+	
 	private static Set<Customer> customers;
 	
 	public TelNumbersFactory() {
 		makeInitialDummyCustomers();
 	}
-	
 	
 	public void makeInitialDummyCustomers() {
 		Set<PhoneNumber> phoneNumSet1 = 
@@ -31,6 +34,12 @@ public class TelNumbersFactory implements ITelNumbersDao {
 		customers = Stream.of(new Customer(1L, "myemail@ddd.com", phoneNumSet1),
 							  new Customer(2L, "myemail@ddd.com", phoneNumSet2),
 						      new Customer(3L, "myemail@ddd.com", phoneNumSet3)).collect(Collectors.toSet());
+		logger.info("created dummy customers");
+	}
+	
+	
+	public static final Set<Customer> getDummyCustomers() {
+		return customers;
 	}
 	
 	

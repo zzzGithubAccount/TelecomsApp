@@ -19,7 +19,7 @@ public class TelecomsControllerAdvice {
 	
 	@ResponseBody                                      
 	@ExceptionHandler(TelNumberAlreadyActivatedException.class)  
-	@ResponseStatus(HttpStatus.NOT_MODIFIED)               
+	@ResponseStatus(HttpStatus.NOT_IMPLEMENTED)               
 	String telNumberAlreadyActivatedHandler(TelNumberAlreadyActivatedException e) {
 		return e.getMessage();
 	}
